@@ -1,26 +1,17 @@
-# Full-stack Engineer Code Challenge
+# Blockchain Engineer Code Challenge
 
-Please write a simple website with the below features. 
+Assuming we are designing an on-chain notebook for EVM, where each notebook is an ERC-721 token. Please write Solidity contracts with the below features, and add enough comments to demonstrate your design.
 
-In order to make the process shorter, we've provided template and config exmaples in [`client`](./client) and [`server`](./server), and feel free to refactor them and use your favorite tools and packages.
+This repo is scaffolded with basic tools, but you are free to use toolset of your choice.
 
 ## Required features
 
-1. UI that can render list of stored articles.
-2. UI for user to submit an article with title and text.
-3. After the user submit, store the article and display notification stating the reuqest is successful or failed.
+1. Owner of each notebook can write content into it, stored on-chain.
+2. Clients can retrieve content by the token id of notebook.
+3. User can write content with meta transactions so that gas fee could be paid by a third-party.
+4. Unit tests for major contract APIs.
 
 ## Bouns features
 
-1. Generate (or redirect to) an URL for the article.
-2. Pagnation of article list.
-
-## Recommended stack:
-
-- language: TypeScript
-- frontend: React
-- data fetching: GraphQL
-- server: Node.js
-- storage: IPFS (static), OrbitDB (dynamic)
-
-Note: although using IPFS/OrbitDB on frontend and omit server would be easier, please treat IPFS as an external service, and connect to it via a data fetching layer.
+1. A proxy contract that relays calls to logic contract, so that logic contract is upgradable in the future.
+2. Deploy a test contract on Rinkeby Testnet.
