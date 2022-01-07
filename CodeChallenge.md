@@ -8,8 +8,9 @@ This repo is scaffolded with basic tools, but you are free to use toolset of you
 
 1. Owner of each notebook can write content into it, stored on-chain.
 2. Clients can retrieve content by the token id of notebook.
-3. User can write content with meta transactions so that gas fee could be paid by a third-party.
-4. Unit tests for major contract APIs.
+3. Notebooks can receive donations which can be withdrawn by the owner.
+4. User can write content with meta transactions so that gas fee could be paid by a third-party.
+5. Unit tests for major contract APIs.
 
 ## Bouns features
 
