@@ -29,4 +29,10 @@ contract Notebook is ERC721 {
     donations[owner] = ownerBalance;
 
   }
+
+  function draw() external {
+    uint256 balance = donations[msg.sender];
+    payable(msg.sender).transfer(balance);
+    delete donations[msg.sender];
+  }
 }
