@@ -22,4 +22,11 @@ contract Notebook is ERC721 {
     _totalSupply = newSupply;
     _safeMint(msg.sender, tokenId);
   }
+
+  function donate(uint256 tokenId) external payable {
+    address owner = ownerOf(tokenId);
+    uint256 ownerBalance = donations[owner] + msg.value;
+    donations[owner] = ownerBalance;
+
+  }
 }

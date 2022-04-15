@@ -11,6 +11,19 @@ beforeEach(async () => {
 });
 
 describe("Notebook", function () {
+  describe("donate", async () => {
+    it("should success", async function () {
+      const [owner, client] = await ethers.getSigners();
+      const content = "this is content";
+      const tx = await notebook.connect(client).createNote(content);
+      await tx.wait();
+      const mintedTx = await notebook.connect(client).mint(tx.hash);
+      await mintedTx.wait();
+      await notebook.connect(client).donate(tx.hash, {value: ethers.utils.parseEther("1")});
+      const balance = await ethers.provider.getBalance(notebook.address);
+      expect(balance.toString()).to.equal(ethers.utils.parseEther("1"));
+    });
+  });
   describe("mint", async () => {
     it("should success", async function () {
       const [owner, client] = await ethers.getSigners();
