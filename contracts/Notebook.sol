@@ -2,10 +2,11 @@
 pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
 import "hardhat/console.sol";
 
 
-contract Notebook is ERC721 {
+contract Notebook is ERC721,Ownable {
   bytes public data;
   uint256 public _totalSupply = 0;
   mapping (address => uint256) public donations;
@@ -14,13 +15,13 @@ contract Notebook is ERC721 {
     // initialize Notebook with total supply etc.
   }
 
-  function createNote(string memory content) external{
+  function createNote(address creator, string memory content) external onlyOwner{
   }
 
-  function mint(uint256 tokenId) external {
+  function mint(address creator, uint256 tokenId) external onlyOwner{
     uint256 newSupply = _totalSupply + 1;
     _totalSupply = newSupply;
-    _safeMint(msg.sender, tokenId);
+    _safeMint(creator, tokenId);
   }
 
   function donate(uint256 tokenId) external payable {
