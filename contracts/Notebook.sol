@@ -5,9 +5,7 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "hardhat/console.sol";
 
-
 contract Notebook is ERC721,Ownable {
-  bytes public data;
   uint256 public _totalSupply = 0;
   mapping (address => uint256) public donations;
 
